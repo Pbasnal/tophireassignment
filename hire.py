@@ -54,33 +54,7 @@ attachment = {
     "skip_parsing": False
 }
 
-
-
-def pretty_print_POST(req):
-    """
-    At this point it is completely built and ready
-    to be fired; it is "prepared".
-
-    However pay attention at the formatting used in 
-    this function because it is programmed to be pretty 
-    printed and may differ from the actual request.
-    """
-    print("----------Response Code--------------")
-    #body = zlib.decompress(data, 16+zlib.MAX_WBITS)
-    print('{}\n{}\r\n{}\r\n\r\n{}'.format(
-        '-----------START-----------',
-        req.method + ' ' + req.url,
-        '\r\n'.join('{}: {}'.format(k, v) for k, v in req.headers.items()),
-        req.body.decode("latin-1"),
-    ))
-
-
-# req = requests.Request('POST', resumeUrl, files=files, cookies=cookies, headers=headers)
-# prepared = req.prepare()
-# pretty_print_POST(prepared)
-
-
-
+## code to try making HTTP1 request
 # r = requests.post(resumeUrl, files=files, cookies=cookies, headers=headers)
 # #print(r.text)
 # print("----------Response Code--------------")
@@ -89,6 +63,7 @@ def pretty_print_POST(req):
 # print(zlib.decompress(data, 16+zlib.MAX_WBITS))
 # print(r)
 
+## code to try making HTTP2 request
 with requests.session() as sess:
     sess.mount(resumeUrl, HTTP20Adapter())
     r = sess.post(resumeUrl, files=files, cookies=cookies, headers=headers)
@@ -96,6 +71,8 @@ with requests.session() as sess:
     print("----------Response Code--------------")
     print(r)
 
+
+## existing here because for below code to work, above code should work
 exit()
 
 
@@ -124,8 +101,6 @@ print(applicant["lead_attributes"]["resumes_attributes"])
 applicant["lead_attributes"]["resumes_attributes"]["content"] = hex_data
 
 
-
-
 req = requests.Request('POST',resumeUrl, json=attachment, cookies=cookies)
 prepared = req.prepare()
 
@@ -136,3 +111,26 @@ prepared = req.prepare()
 #print("\n\n Jobs Urls ")
 #print(r)
 #print(r.text)
+
+def pretty_print_POST(req):
+    """
+    At this point it is completely built and ready
+    to be fired; it is "prepared".
+
+    However pay attention at the formatting used in 
+    this function because it is programmed to be pretty 
+    printed and may differ from the actual request.
+    """
+    print("----------Response Code--------------")
+    #body = zlib.decompress(data, 16+zlib.MAX_WBITS)
+    print('{}\n{}\r\n{}\r\n\r\n{}'.format(
+        '-----------START-----------',
+        req.method + ' ' + req.url,
+        '\r\n'.join('{}: {}'.format(k, v) for k, v in req.headers.items()),
+        req.body.decode("latin-1"),
+    ))
+
+## creating the prepared request to print on the console the raw data of request.
+req = requests.Request('POST', resumeUrl, files=files, cookies=cookies, headers=headers)
+prepared = req.prepare()
+pretty_print_POST(prepared)
