@@ -1,0 +1,30 @@
+------WebKitFormBoundary7AOdtFqLTD9TrA9o
+Content-Disposition: form-data; name="attachment[content_file_name]"
+
+<resumename>
+------WebKitFormBoundary7AOdtFqLTD9TrA9o
+Content-Disposition: form-data; name="attachment[content_content_type]"
+
+<resumetype>
+------WebKitFormBoundary7AOdtFqLTD9TrA9o
+Content-Disposition: form-data; name="attachment[content_file_size]"
+
+<resumesize>
+------WebKitFormBoundary7AOdtFqLTD9TrA9o
+Content-Disposition: form-data; name="attachment[content_updated_at]"
+
+<updatetime>
+------WebKitFormBoundary7AOdtFqLTD9TrA9o
+Content-Disposition: form-data; name="attachment[content]"; filename="<resumename>"
+Content-Type: <resumetype>
+
+
+------WebKitFormBoundary7AOdtFqLTD9TrA9o
+Content-Disposition: form-data; name="attachment[description]"
+
+resume
+------WebKitFormBoundary7AOdtFqLTD9TrA9o
+Content-Disposition: form-data; name="attachment[skip_parsing]"
+
+false
+------WebKitFormBoundary7AOdtFqLTD9TrA9o--
